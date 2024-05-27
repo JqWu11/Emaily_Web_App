@@ -6,4 +6,6 @@ app.get('/', (req, res) => {
 });
 //heroku looks for the underlying environment to see if there is a port to use
 const PORT = process.env.PORT || 5000;
-app.listen(5000);
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
