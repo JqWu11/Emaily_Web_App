@@ -11,7 +11,7 @@ import ReactDOM from "react-dom/client";
 import App from './components/App';
 import reducers from './reducers';
 
-const store = createStore(() => reducers, {}, applyMiddleware(thunk));
+const store = createStore(reducers, {}, applyMiddleware(thunk));
  
 // 3) Get a reference to the div with ID root
 const el = document.getElementById("root");
