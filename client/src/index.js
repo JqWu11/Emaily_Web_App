@@ -3,11 +3,7 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import { createStore, applyMiddleware} from 'redux';
 import {thunk} from 'redux-thunk';
-
-// 1) Import ReactDOM library
 import ReactDOM from "react-dom/client";
- 
-// 2) Import App component as usual
 import App from './components/App';
 import reducers from './reducers';
 
@@ -23,3 +19,6 @@ const root = ReactDOM.createRoot(el);
 root.render(
 <Provider store= {store}><App /></Provider>,
     document.querySelector('#root'));
+
+    console.log('Stripe Key Is', process.env.REACT_APP_STRIPE_KEY);
+    console.log('Environment is', process.env.NODE_ENV);
