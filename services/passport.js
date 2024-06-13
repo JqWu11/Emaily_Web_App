@@ -2,6 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
+const User = require('../models/users');
 
 const user = mongoose.model('users');
 
@@ -31,7 +32,7 @@ passport.use(
                 return done(null, existingUser);
             }
             else {
-                const user = await new user({ googleID: profile.id }).save()
+                const user = await new User({ googleID: profile.id }).save()
                 done(null, user);
             }
         })
