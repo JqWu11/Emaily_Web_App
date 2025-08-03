@@ -9,27 +9,45 @@ class Header extends Component {
       case null:
         return;
       case false:
-        return <li><a href="/auth/google">Login With Google</a></li>;
+        return (
+          <li className="nav-item">
+            <a href="/auth/google" className="nav-link">
+              <span className="icon icon-login icon-left"></span>
+              Login With Google
+            </a>
+          </li>
+        );
       default:
         return [
-          <li key="1"><Payments /></li>,
-          <li key="3" style={{ margin: '0 10px' }}>
-            Credits: {this.props.auth.credits}
+          <li key="1" className="nav-item">
+            <Payments />
           </li>,
-          <li key="2"><a href="/api/logout">Logout</a></li>
+          <li key="3" className="nav-item credits-display">
+            <span className="icon icon-wallet icon-left"></span>
+            <span className="credits-text">Credits: {this.props.auth.credits}</span>
+          </li>,
+          <li key="2" className="nav-item">
+            <a href="/api/logout" className="nav-link">
+              <span className="icon icon-logout icon-left"></span>
+              Logout
+            </a>
+          </li>
         ];
     }
   }
 
   render() {
     return (
-      <nav>
+      <nav className="app-header">
         <div className="nav-wrapper">
-          <Link to={this.props.auth ? "/surveys" : "/"}
-            className="left brand-logo">
+          <Link 
+            to={this.props.auth ? "/surveys" : "/"}
+            className="brand-logo"
+          >
+            <span className="icon icon-dashboard icon-left"></span>
             SurveyMaster
           </Link>
-          <ul className="right">
+          <ul className="nav-menu">
             {this.renderContent()}
           </ul>
         </div>

@@ -4,12 +4,19 @@ import React from 'react';
 
 export default ({ input, label, meta: { error, touched } }) => {
   return (
-    <div>
-      <label>{label}</label>
-      <input {...input} style={{ marginBottom: '5px' }} />
-      <div className="red-text" style={{ marginBottom: '20px' }}>
-        {touched && error}
-      </div>
+    <div className="form-field">
+      <label className="field-label">{label}</label>
+      <input 
+        {...input} 
+        className={`field-input ${touched && error ? 'field-input-error' : ''}`}
+        placeholder={`Enter ${label.toLowerCase()}`}
+      />
+      {touched && error && (
+        <div className="field-error">
+          <span className="icon icon-error error-icon"></span>
+          {error}
+        </div>
+      )}
     </div>
   );
 };

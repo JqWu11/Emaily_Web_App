@@ -24,17 +24,33 @@ class SurveyForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
-          {this.renderFields()}
-          <Link to="/surveys" className="red btn-flat white-text">
-            Cancel
-          </Link>
-          <button type="submit" className="teal btn-flat right white-text">
-            Next
-            <i className="material-icons right">done</i>
-          </button>
-        </form>
+      <div className="survey-form-container">
+        <div className="form-header">
+          <h2 className="form-title">
+            <span className="icon icon-create icon-left"></span>
+            Create New Survey
+          </h2>
+          <p className="form-subtitle">
+            Fill out the form below to create your survey
+          </p>
+        </div>
+
+        <div className="form-card">
+          <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)} className="survey-form">
+            {this.renderFields()}
+            
+            <div className="form-actions">
+              <Link to="/surveys" className="btn-secondary">
+                <span className="icon icon-cancel icon-left"></span>
+                Cancel
+              </Link>
+              <button type="submit" className="btn-primary">
+                <span className="icon icon-arrow-forward icon-right"></span>
+                Next
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

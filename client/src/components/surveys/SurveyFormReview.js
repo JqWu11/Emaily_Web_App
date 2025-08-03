@@ -9,9 +9,9 @@ import * as actions from '../../actions';
 const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
   const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
-      <div key={name}>
-        <label>{label}</label>
-        <div>
+      <div key={name} className="review-field">
+        <label className="field-label">{label}</label>
+        <div className="field-value">
           {formValues[name]}
         </div>
       </div>
@@ -19,22 +19,41 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
   });
 
   return (
-    <div>
-      <h5>Please confirm your entries</h5>
-      {reviewFields}
-      <button
-        className="yellow darken-3 white-text btn-flat"
-        onClick={onCancel}
-      >
-        Back
-      </button>
-      <button
-        onClick={() => submitSurvey(formValues, history)}
-        className="green btn-flat right white-text"
-      >
-        Send Survey
-        <i className="material-icons right">email</i>
-      </button>
+    <div className="survey-form-container">
+      <div className="form-header">
+        <h2 className="form-title">
+          <span className="icon icon-preview icon-left"></span>
+          Review Your Survey
+        </h2>
+        <p className="form-subtitle">
+          Please confirm your entries before sending
+        </p>
+      </div>
+
+      <div className="form-card">
+        <div className="survey-form">
+          <div className="review-fields">
+            {reviewFields}
+          </div>
+          
+          <div className="form-actions">
+            <button
+              className="btn-secondary"
+              onClick={onCancel}
+            >
+              <span className="icon icon-arrow-back icon-left"></span>
+              Back
+            </button>
+            <button
+              onClick={() => submitSurvey(formValues, history)}
+              className="btn-primary"
+            >
+              <span className="icon icon-send icon-right"></span>
+              Send Survey
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
